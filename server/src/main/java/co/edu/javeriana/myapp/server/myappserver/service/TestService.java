@@ -5,6 +5,10 @@ import co.edu.javeriana.myapp.server.myappserver.LibroService;
 import co.edu.javeriana.myapp.server.myappserver.model.Empleado;
 import co.edu.javeriana.myapp.server.myappserver.model.Libro;
 import co.edu.javeriana.myapp.server.myappserver.model.LibroRepository;
+import co.edu.javeriana.myapp.server.myappserver.model.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -43,8 +47,8 @@ public class TestService {
 
 	@RequestMapping(value = "/current-user", method = RequestMethod.GET, produces="application/json")
     @ResponseBody
-    public Empleado currentUserName(Authentication authentication) {
-        Empleado user = (Empleado) authentication.getPrincipal();
+    public User currentUserName(Authentication authentication) {
+        User user = (User) authentication.getPrincipal();
         return user;
     }
 	

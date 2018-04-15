@@ -4905,3 +4905,21 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Nic
 	at org.h2.mvstore.FileStore.open(FileStore.java:173)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:347)
 	... 148 more
+2018-04-14 18:13:17 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "REGISTEREDUSER" not found; SQL statement:
+insert into registereduser ( id, username, password, name, lastname, role, institution ) values ( 1, 'CamiV', '123', 'Camila', 'Villarreal', 0, 1 ) [42102-196]
+2018-04-14 18:13:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "REGISTEREDUSER" not found; SQL statement:
+insert into registereduser ( id, username, password, name, lastname, role, institution ) values ( 1, 'CamiV', '123', 'Camila', 'Villarreal', 0, 1 ) [42102-196]
+2018-04-14 18:20:37 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "REGISTEREDUSER" not found; SQL statement:
+insert into registereduser ( id, username, password, name, lastname, role, institution ) values ( 1, 'CamiV', '123', 'Camila', 'Villarreal', 0, 1 ) [42102-196]
+2018-04-14 18:21:43 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "REGISTEREDUSER" not found; SQL statement:
+insert into registereduser ( id, username, password, name, lastname, role, institution ) values ( 1, 'CamiV', '123', 'Camila', 'Villarreal', 0, 1 ) [42102-196]
+2018-04-14 18:23:02 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "REGISTEREDUSER" not found; SQL statement:
+insert into registereduser ( id, username, password, name, lastname, role, institution_id ) values ( 1, 'CamiV', '123', 'Camila', 'Villarreal', 0, 1 ) [42102-196]
+2018-04-14 21:14:27 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Data conversion error converting "Javeriana"; SQL statement:
+SELECT * FROM offer e WHERE (branch_id = ?) [22018-196]

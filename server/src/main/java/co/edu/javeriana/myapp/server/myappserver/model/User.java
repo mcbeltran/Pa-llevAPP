@@ -8,21 +8,32 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import co.edu.javeriana.myapp.server.myappserver.utils.UserRole;
+
 // Ver http://www.baeldung.com/role-and-privilege-for-spring-security-registration
 public class User implements UserDetails {
+	
 	private static final long serialVersionUID = 1987040876334251017L;
+	
 	private String username;
 	private String password;
+	private String university;
+	private UserRole role;
+	
 	private boolean accountNonExpired;
 	private boolean accountNonLocked;
 	private boolean credentialsNonExpired;
 	private boolean enabled;
 	private List<GrantedAuthority> authorities = new ArrayList<>();
 
-	public  User(String username, String password, String... authorities) {
+	public  User(String username, String password, String university, UserRole role, String... authorities) {
 		super();
+		
 		this.username = username;
 		this.password = password;
+		this.university = university;
+		this.role = role;
+		
 		for (String auth : authorities) {
 			GrantedAuthority ga = new GrantedAuthority(){
 				private static final long serialVersionUID = -3483137563784976405L;
@@ -78,6 +89,23 @@ public class User implements UserDetails {
 	public String toString() {
 		return "User [username=" + username + ", password=" + password + "]";
 	}
+
+	public String getUniversity() {
+		return university;
+	}
+
+	public void setUniversity(String university) {
+		this.university = university;
+	}
+
+	public UserRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserRole role) {
+		this.role = role;
+	}
+	
 
 
 }

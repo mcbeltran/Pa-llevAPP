@@ -28,7 +28,7 @@ public class RESTAuthenticationProvider implements AuthenticationProvider {
 		String password = authentication.getCredentials().toString();
 		
 
-		Empleado user = userDetailsService.loadUserByUsername(name);
+		User user = userDetailsService.loadUserByUsername(name);
 		
 		if (user != null && password.equals(user.getPassword())) {
 			logger.info("Succesful authentication!");
