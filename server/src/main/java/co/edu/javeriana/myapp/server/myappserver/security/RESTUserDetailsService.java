@@ -1,8 +1,10 @@
 package co.edu.javeriana.myapp.server.myappserver.security;
 
 import co.edu.javeriana.myapp.server.myappserver.EmpleadoService;
+import co.edu.javeriana.myapp.server.myappserver.RegisteredUserService;
 import co.edu.javeriana.myapp.server.myappserver.model.Empleado;
 import co.edu.javeriana.myapp.server.myappserver.model.EmpleadoRepository;
+import co.edu.javeriana.myapp.server.myappserver.model.RegisteredUser;
 import co.edu.javeriana.myapp.server.myappserver.model.User;
 
 import java.util.HashMap;
@@ -20,42 +22,40 @@ import org.springframework.stereotype.Service;
 public class RESTUserDetailsService implements UserDetailsService {
 	
 	@Autowired
-	private EmpleadoService es;
-	Map<String, Empleado> users = new HashMap<>();
+	private RegisteredUserService registeredUserService;
+	Map<String, User> users = new HashMap<>();
 
 	public RESTUserDetailsService() {
 		super();
 	}
 	
 	@Override
-	public Empleado loadUserByUsername(String username) throws UsernameNotFoundException {
+	public User loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO En este método debería recuperarlse la info del usuario desde la base de datos
 		
 //		System.out.println("*** Retrieving user");
-		Empleado e = null;
+		RegisteredUser user = null;
+		User newUser = null;
 		
 		if( !users.containsKey(username) ) {
 			//EmpleadoService es = new EmpleadoService();
 			
-			e = es.findByUsername(username);
+			user = registeredUserService.findByUsername(username);
 			
 //			System.out.println(e.getUsername() + " " + e.getPassword() + " " + e.getId() + " " + e.getRol().toString() );
 			
-			if( e != null ) {
-				Empleado ne = new Empleado( e.getUsername(), e.getPassword(), e.getRol().toString() );
-				e.setAuthorities( ne.getAuth() );
-				//es.addAuth(e);
-//				System.out.println("Rol  "+ e.getRol());
-//				System.out.println("AUTH  "+ e.getAuth());
-				users.put(e.getUsername(), e);
+			if( user != null ) {
+				newUser = new User( user.getUsername(), user.getPassword(), user.getInstitution().getName(), user.getRole(), user.getRole().toString() );
+				users.put(user.getUsername(), newUser);
 				
 			}
 			
-		} else
-			e = users.get(username);
+		} else {
+			newUser = users.get(username);
+		}
 		
 		
-		return ( e );
+		return ( newUser );
 	}	
 
 }

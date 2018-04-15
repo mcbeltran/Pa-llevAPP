@@ -1,5 +1,7 @@
 package co.edu.javeriana.myapp.server.myappserver;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
@@ -100,5 +102,20 @@ public class LibroService {
 		
 	    return new ResponseEntity<Libro>(libro, HttpStatus.OK);
 	}
+
+	/*
+	@RequestMapping( value = "/services/universities", method = RequestMethod.GET )
+	 public List<String> getUniversities() {
+		 List<String> universities = new ArrayList<String>();
+		 
+		 universities.add("Javeriana");
+		 universities.add("Nacional");
+		 universities.add("Antioquia");
+		 
+		 System.out.println("LLEGÓ PERRO");
+		 
+		 return universities;
+	 }
+	 */
 	
 }
