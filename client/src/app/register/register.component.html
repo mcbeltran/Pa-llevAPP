@@ -1,0 +1,60 @@
+<form (ngSubmit)="doRegister()">
+
+  <div class="form-group">
+    <label for="university" class="control-label">Universidad</label>
+    <select (change)="selectUniversity($event.target)">
+      <option *ngFor="let u of universities" [value]="u.id" >{{u.name}}</option>
+    </select>
+  </div>
+
+  <div class="form-group" [class.has-error]="newusername.invalid && newusername.touched">
+    <label for="username" class="control-label">Apodo</label>
+    <input type="text" #newusername="ngModel" [(ngModel)]="username"
+    name="username" id="username" placeholder="Nombre de usuario" required>
+    <span class="help-block" *ngIf="newusername.invalid && newusername.touched" >Se requiere ingresar un nombre usuario</span>
+  </div>
+
+  <div class="form-group" [class.has-error]="newname.invalid && newname.touched">
+    <label for="name" class="control-label">Nombre</label>
+    <input type="text" #newname="ngModel" [(ngModel)]="name"
+    name="name" placeholder="Nombre" required>
+    <span class="help-block" *ngIf="newname.invalid && newname.touched" >Se requiere ingresar su nombre</span>
+  </div>
+
+  <div class="form-group" [class.has-error]="newlastname.invalid && newlastname.touched">
+      <label for="lastname" class="control-label">Apellido</label>
+    <input type="text" #newlastname="ngModel" [(ngModel)]="lastname"
+    name="lastname" placeholder="Apellido" required>
+    <span class="help-block" *ngIf="newlastname.invalid && newlastname.touched" >Se requiere ingresar su apellido</span>
+  </div>
+
+  <div class="form-group" [class.has-error]="email.invalid && email.touched">
+    <label for="email" class="control-label">Correo electrónico</label>
+    <input type="text" #email="ngModel" [(ngModel)]="mail"
+    name="mail" id="mail" placeholder="Correo electrónico" required [email]="mail !== ''">
+    <span class="help-block" *ngIf="email.errors?.required && email.touched" >Se requiere ingresar un correo electrónico</span>
+    <span class="help-block" *ngIf="email.errors?.email && email.touched" >Se requiere un correo electrónico válido</span>
+  </div>
+
+  <div class="form-group" [class.has-error]="newpassword.invalid && newpassword.touched">
+      <label for="password" class="control-label">Contraseña</label>
+    <input type="text" #newpassword="ngModel" [(ngModel)]="password"
+    name="password" placeholder="Contraseña" required>
+    <span class="help-block" *ngIf="newpassword.invalid && newpassword.touched" >Se requiere ingresar un password</span>
+  </div>
+
+  <div class="form-group" [class.has-error]="newverifypassword.invalid && newverifypassword.touched">
+      <label for="verify_password" class="control-label">Repita su contraseña</label>
+    <input type="text" #newverifypassword="ngModel" [(ngModel)]="verify_password"
+    name="verify_password" placeholder="Verificar contraseña" required>
+    <span class="help-block" *ngIf="newverifypassword.invalid && newverifypassword.touched" >Se requiere ingresar un password para la verificación</span>
+  </div>
+
+  <div class="form-group" id="role_selector" (change)="selectRole($event.target)">
+    <input type="radio" name="role" id="univendedor" value="ROLE_UNIVENDEDOR" checked> Univendedor
+    <input type="radio" name="role" id="uniconsumidor" value="ROLE_UNICONSUMIDOR"> Uniconsumidor
+  </div>
+
+  <button class="btn btn-primary" type="submit" id="register">Registrarse</button>
+
+</form>

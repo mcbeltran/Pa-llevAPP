@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
+import { User } from './User';
+import { University } from './University';
 
 @Injectable()
 export class DatabaseService {
@@ -73,9 +75,9 @@ export class DatabaseService {
 
   /*----------- INICIO listar Us Usuario ---------*/
 
-  listUniversities(): Observable<string[]> {
+  listUniversities(): Observable<University[]> {
 
-    return (this.http.get<string[]>(this.url_database + 'services/universities', {
+    return (this.http.get<University[]>(this.url_database + 'services/universities', {
       withCredentials: true
     }));
 
@@ -83,12 +85,12 @@ export class DatabaseService {
 
   /*----------- FIN listar Us Usuario ---------*/
 
-  /*----------- INICIO listar Us Usuario ---------*/
+  /*----------- INICIO añadir Usuario ---------*/
 
-  verifyUniversity(){
-    
+  public registerUser( newUser: User ) {
+    return this.http.post( this.url_database + 'services/register', newUser, { withCredentials: true } );
   }
 
-  /*----------- FIN listar Us Usuario ---------*/
+  /*----------- FIN añadir Usuario ---------*/
 
 }

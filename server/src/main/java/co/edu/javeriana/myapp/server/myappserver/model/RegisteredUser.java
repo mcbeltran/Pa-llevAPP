@@ -2,6 +2,7 @@ package co.edu.javeriana.myapp.server.myappserver.model;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,10 +21,12 @@ public class RegisteredUser {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(unique=true)
 	private String username;
 	private String password;
 	private String name;
 	private String lastname;
+	private String mail;
 	private UserRole role;
 	
 	@ManyToOne
@@ -97,6 +100,14 @@ public class RegisteredUser {
 
 	public void setOffers(List<Offer> offers) {
 		this.offers = offers;
+	}
+
+	public String getMail() {
+		return mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 	
 	
