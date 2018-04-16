@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import co.edu.javeriana.myapp.server.myappserver.model.University;
 import co.edu.javeriana.myapp.server.myappserver.model.UniversityRepository;
 
 @RestController
@@ -20,7 +21,7 @@ public class UniversityService {
 	private UniversityRepository repository;
 
 	@RequestMapping(value = "/universities", method = RequestMethod.GET)
-	public List<String> getUniversities() {
+	public List<Object[]> getUniversities() {
 		return repository.getUniversityNames();
 	}
 
