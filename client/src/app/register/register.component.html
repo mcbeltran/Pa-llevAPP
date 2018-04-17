@@ -55,6 +55,19 @@
     <input type="radio" name="role" id="uniconsumidor" value="ROLE_UNICONSUMIDOR"> Uniconsumidor
   </div>
 
+  <div class="form-group">
+    <label for="InputProfilePicture">Foto de perfil</label>
+    <input type="file" name="form-control-file" id="profilePicture" aria-describedby="fileHelp"
+           (change)="onFileSelected($event.target.files)">
+    <small id="fileHelp" class="form-text text-muted">Selecciona tu foto de perfil</small>
+  </div>
+
   <button class="btn btn-primary" type="submit" id="register">Registrarse</button>
 
+</form>
+
+<form (ngSubmit)="loadImage('profile_picture_Osc.png')">
+  <img [src]="imageUrl" 
+       style="width: 250px; height: 250px;">
+  <button type="submit">Load image</button>
 </form>

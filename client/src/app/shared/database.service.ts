@@ -93,4 +93,19 @@ export class DatabaseService {
 
   /*----------- FIN añadir Usuario ---------*/
 
+  /*----------- INICIO IMAGEN ---------*/
+
+  public uploadFile( file: File, file_name: string ){
+    return this.http.post( this.url_database + 'services/upload/' + file_name, file, { withCredentials: true } );
+  }
+
+  public loadFile( file_name: string ) : Observable<Blob> {
+    return this.http.get( this.url_database +'services/load/' + file_name, { 
+      withCredentials: true,
+      responseType: 'blob'
+     } );
+  }
+
+  /*----------- FIN IMAGEN ---------*/
+
 }
